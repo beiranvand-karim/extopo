@@ -1,14 +1,14 @@
 
 
 
-export const FETCH_PEOPLE_BEGIN   = 'FETCH_PEOPLE_BEGIN';
-export const FETCH_PEOPLE_SUCCESS = 'FETCH_PEOPLE_SUCCESS';
-export const FETCH_PEOPLE_ERROR = 'FETCH_PEOPLE_ERROR';
+export const FETCH_PERSON_BEGIN   = 'FETCH_PEOPLE_BEGIN';
+export const FETCH_PERSON_SUCCESS = 'FETCH_PEOPLE_SUCCESS';
+export const FETCH_PERSON_ERROR = 'FETCH_PEOPLE_ERROR';
 
-export default function fetchPeople(token) {
+export default function fetchPerson(token, id) {
     return dispatch => {
         dispatch(fetchPeopleBegin());
-        return fetch(`http://127.0.0.1:3001/people`,{
+        return fetch(`http://127.0.0.1:3001/people/${id}`,{
             method: "GET",
             headers: {
                 "cache-control": "no-cache",
@@ -34,17 +34,17 @@ function handleErrors(response) {
 }
 
 export const fetchPeopleBegin =() => ({
-    type: FETCH_PEOPLE_BEGIN
+    type: FETCH_PERSON_BEGIN
 });
 
-export const fetchPeopleSuccess = (token) => {
+export const fetchPeopleSuccess = (person) => {
     return {
-        type: FETCH_PEOPLE_SUCCESS,
-        payload: token
+        type: FETCH_PERSON_SUCCESS,
+        payload: person
     }
 };
 
 export const fetchPeopleError = (error) => ({
-    type: FETCH_PEOPLE_ERROR,
+    type: FETCH_PERSON_ERROR,
     payload: error
 });

@@ -6,24 +6,25 @@ import {Link} from "react-router-dom";
 
 class PeopleList extends React.Component {
     componentDidMount() {
-        console.log(this.props.token);
         this.props.dispatch(fetchPeople(this.props.token));
     }
     render() {
         const { error ,loading, people } = this.props;
-        console.log(this.props.people);
         if (error) {
-            return <div>Error! {error.message}</div>;
+            return <div>
+                <div>Error! {error.message}</div>
+                <Link to="/log-in">go to login page</Link>
+            </div>
         }
         if (loading) {
             return <div>Loading...</div>;
         }
-        if (people) {
+        if (people && people.length > 0) {
             return (
                 <ul>
                     {people.map((person) =>
                         <li key={person._id}>
-                            <Link to={`/detail/${person._id}`}>{person._id} - {person.name} - {person.email}</Link>
+                            <Link to={`/person-detail/${person._id}`}>{person._id} - {person.name} - {person.email}</Link>
                         </li>
                     )}
                 </ul>

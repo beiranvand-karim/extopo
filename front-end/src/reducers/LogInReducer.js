@@ -7,7 +7,8 @@ import {
 const initialState = {
     token: null,
     loading: false,
-    error: null
+    error: null,
+    loggedIn: false
 };
 
 export default function LogInReducer(state = initialState, action) {
@@ -23,7 +24,8 @@ export default function LogInReducer(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                token: action.payload
+                token: action.payload,
+                loggedIn: true
             };
 
         case CHECK_LOG_IN_BEGIN_ERROR:

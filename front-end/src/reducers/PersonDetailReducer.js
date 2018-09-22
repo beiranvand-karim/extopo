@@ -1,38 +1,38 @@
 import {
-    FETCH_PEOPLE_BEGIN,
-    FETCH_PEOPLE_SUCCESS,
-    FETCH_PEOPLE_ERROR
-} from '../actions/FetchPeopleActions';
+    FETCH_PERSON_BEGIN,
+    FETCH_PERSON_SUCCESS,
+    FETCH_PERSON_ERROR
+} from '../actions/FetchPersonDetailActions';
 
 const initialState = {
-    people: null,
+    person: null,
     loading: false,
     error: null
 };
 
-export default function FetchPeopleReducer(state = initialState, action) {
+export default function PersonDetailReducer(state = initialState, action) {
     switch(action.type) {
-        case FETCH_PEOPLE_BEGIN:
+        case FETCH_PERSON_BEGIN:
             return {
                 ...state,
                 loading: true,
                 error: null
             };
 
-        case FETCH_PEOPLE_SUCCESS:
+        case FETCH_PERSON_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                people: action.payload
+                person: action.payload
             };
 
-        case FETCH_PEOPLE_ERROR:
+        case FETCH_PERSON_ERROR:
 
             return {
                 ...state,
                 loading: false,
                 error: action.payload,
-                people: null
+                person: null
             };
 
         default:
