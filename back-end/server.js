@@ -1,10 +1,12 @@
 const Koa = require("koa");
 const Router = require("koa-router");
+const cors = require('@koa/cors');
 const BodyParser = require("koa-bodyparser");
 const logger = require('koa-logger');
 const jwt = require("./jwt");
 const ObjectID = require("mongodb").ObjectID;
 const app = new Koa();
+app.use(cors());
 require("./mongo")(app);
 
 const router = new Router();

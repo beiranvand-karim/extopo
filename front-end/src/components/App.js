@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 import '../App.css';
 import UserList from "../containers/UserList";
 import SingleUser from "../containers/SingleUser";
+import LogIn from '../containers/LogIn';
 
 export class Switcher extends Component {
     render() {
@@ -24,12 +25,7 @@ const Home = () => {
     </div>
 };
 
-const LogIn = () => {
-    return <div>
-        <h1>this is LogIn page</h1>
-        <Link to="users">users</Link>
-    </div>
-};
+
 
 const App = () => (
     <Router>
