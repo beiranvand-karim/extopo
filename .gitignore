@@ -1,5 +1,10 @@
 .idea
-front-end/node_modules
+
+
 back-end/node_modules
-front-end/yarn.lock
 back-end/package-lock.json
+
+
+front-end/package-lock.json
+front-end/yarn.lock
+front-end/node_modules
