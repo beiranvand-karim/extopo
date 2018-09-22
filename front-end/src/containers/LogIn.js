@@ -7,14 +7,14 @@ class LogIn extends React.Component {
         this.props.dispatch(checkLogIn('user', 'pwd'));
     };
     redirectToTarget = () => {
-        this.props.history.push(`/users`);
+        this.props.history.push(`/people-list`);
     };
     render() {
         return (
             <div>
                 <h1>this is LogIn page</h1>
                 <button onClick={this.checkOnLogin}>check log in</button>
-                <button onClick={this.redirectToTarget}>go to users</button>
+                <button onClick={this.redirectToTarget}>go to people</button>
             </div>
         );
     }

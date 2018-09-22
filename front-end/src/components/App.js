@@ -4,6 +4,8 @@ import '../App.css';
 import UserList from "../containers/UserList";
 import SingleUser from "../containers/SingleUser";
 import LogIn from '../containers/LogIn';
+import PeopleList from "../containers/PeopleList";
+import Home from "./Home";
 
 export class Switcher extends Component {
     render() {
@@ -13,19 +15,11 @@ export class Switcher extends Component {
                 <Route path="/log-in" component={LogIn}/>
                 <Route path="/users" component={UserList}/>
                 <Route path="/detail/:id" component={SingleUser}/>
+                <Route path="/people-list" component={PeopleList}/>
             </Switch>
         )
     }
 }
-
-const Home = () => {
-    return <div>
-        <h1>this is home page</h1>
-        <Link to="log-in">log in</Link>
-    </div>
-};
-
-
 
 const App = () => (
     <Router>
