@@ -7,6 +7,7 @@ import LogIn from '../containers/LogIn';
 import PeopleList from "../containers/PeopleList";
 import Home from "./Home";
 import PersonDetail from "../containers/PersonDetail";
+import SignUp from "../containers/SignUp";
 
 export class Switcher extends Component {
     render() {
@@ -14,6 +15,7 @@ export class Switcher extends Component {
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route path="/log-in" component={LogIn}/>
+                <Route path="/sign-up" component={SignUp}/>
                 <Route path="/users" component={UserList}/>
                 <Route path="/detail/:id" component={SingleUser}/>
                 <Route path="/people-list" component={PeopleList}/>

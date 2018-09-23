@@ -1,8 +1,8 @@
 
 
 export const CHECK_LOG_IN_BEGIN   = 'CHECK_LOG_IN_BEGIN';
-export const CHECK_LOG_IN_BEGIN_SUCCESS = 'CHECK_LOG_IN_BEGIN_SUCCESS';
-export const CHECK_LOG_IN_BEGIN_ERROR = 'CHECK_LOG_IN_BEGIN_ERROR';
+export const CHECK_LOG_IN_SUCCESS = 'CHECK_LOG_IN_SUCCESS';
+export const CHECK_LOG_IN_ERROR = 'CHECK_LOG_IN_ERROR';
 
 export default function checkLogIn(userName, passWord) {
     return dispatch => {
@@ -38,12 +38,12 @@ export const checkLogInBegin =() => ({
 
 export const checkLogInSuccess = (token) => {
     return {
-        type: CHECK_LOG_IN_BEGIN_SUCCESS,
+        type: CHECK_LOG_IN_SUCCESS,
         payload: token
     }
 };
 
 export const checkLogInError = (error) => ({
-    type: CHECK_LOG_IN_BEGIN_ERROR,
+    type: CHECK_LOG_IN_ERROR,
     payload: error
 });

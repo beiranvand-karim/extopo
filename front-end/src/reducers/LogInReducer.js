@@ -1,7 +1,7 @@
 import {
     CHECK_LOG_IN_BEGIN,
-    CHECK_LOG_IN_BEGIN_SUCCESS,
-    CHECK_LOG_IN_BEGIN_ERROR
+    CHECK_LOG_IN_SUCCESS,
+    CHECK_LOG_IN_ERROR
 } from '../actions/LogInActions';
 
 const initialState = {
@@ -20,7 +20,7 @@ export default function LogInReducer(state = initialState, action) {
                 error: null
             };
 
-        case CHECK_LOG_IN_BEGIN_SUCCESS:
+        case CHECK_LOG_IN_SUCCESS:
             return {
                 ...state,
                 loading: false,
@@ -28,7 +28,7 @@ export default function LogInReducer(state = initialState, action) {
                 loggedIn: true
             };
 
-        case CHECK_LOG_IN_BEGIN_ERROR:
+        case CHECK_LOG_IN_ERROR:
 
             return {
                 ...state,
