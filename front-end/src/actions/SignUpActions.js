@@ -18,7 +18,7 @@ export default function SingUp(data) {
             .then(handleErrors)
             .then(res => res.json())
             .then(json => {
-                dispatch(signUpSuccess(json.ops[0]));
+                dispatch(signUpSuccess(json));
                 return json
             })
             .catch(error => dispatch(signUpError(error)));

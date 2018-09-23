@@ -13,16 +13,22 @@ class SignUp extends React.Component {
     };
     formSubmit = (e) => {
         e.preventDefault();
-        this.props.dispatch(SingUp(this.state))
+        this.props.dispatch(SingUp(this.state));
+        this.setState({firstName: ''});
+        this.setState({lastName: ''});
+        this.setState({userName: ''});
+        this.setState({email: ''});
+        this.setState({passWord: ''});
     };
     render() {
-            const {loading, user} = this.props;
+        const {loading, user} = this.props;
         if(loading) {
             return <div>loading ...</div>
         }
 
         if (user) {
             return <React.Fragment>
+                <h1>user with follow up data registered ...</h1>
                 <h3>first name: {user.firstName}</h3>
                 <h3>last name: {user.lastName}</h3>
                 <h3>email: {user.email}</h3>

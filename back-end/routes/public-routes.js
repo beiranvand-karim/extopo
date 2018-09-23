@@ -26,7 +26,8 @@ router.post("/auth", async (ctx) => {
 });
 
 router.post('/sign-up', async (ctx) => {
-    ctx.body = await ctx.app.users.insertOne(ctx.request.body);
+    await ctx.app.users.insertOne(ctx.request.body);
+    ctx.body = await ctx.app.users.findOne({email: ctx.request.body.email});
 });
 
 router.get('/users', async (ctx) => {
