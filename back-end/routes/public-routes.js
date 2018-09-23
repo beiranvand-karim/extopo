@@ -25,4 +25,12 @@ router.post("/auth", async (ctx) => {
     }
 });
 
+router.post('/sign-up', async (ctx) => {
+    ctx.body = await ctx.app.users.insertOne(ctx.request.body);
+});
+
+router.get('/users', async (ctx) => {
+    ctx.body = await ctx.app.users.find().toArray();
+});
+
 module.exports = router;

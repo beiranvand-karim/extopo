@@ -1,5 +1,4 @@
 const Router = require("koa-router");
-const jwt = require("../jwt");
 const ObjectID = require("mongodb").ObjectID;
 
 const securedRouter = new Router();
@@ -9,7 +8,7 @@ securedRouter.get("/people", async (ctx) => {
 });
 
 securedRouter.post("/people", async (ctx) => {
-    ctx.body = await ctx.app.people.insert(ctx.request.body);
+    ctx.body = await ctx.app.people.insertOne(ctx.request.body);
 });
 
 securedRouter.get("/people/:id", async (ctx) => {

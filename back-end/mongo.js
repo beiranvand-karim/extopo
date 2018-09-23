@@ -6,7 +6,8 @@ module.exports = function (app) {
         .then((client) => {
             const db = client.db('polyglot_ninja');
             app.people = db.collection('people');
-            console.log('Database connection established')
+            app.users = db.collection('users');
+            console.log('database connection established...')
         })
         .catch((err) => console.error(err))
 };
