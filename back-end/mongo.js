@@ -4,7 +4,7 @@ const MONGO_URL = "mongodb://localhost:27017/polyglot_ninja";
 module.exports = function (app) {
     MongoClient.connect(MONGO_URL, { useNewUrlParser: true })
         .then((client) => {
-            const db = client.db('polyglot_ninja');
+            const db = client.db('extopo');
             app.people = db.collection('people');
             app.users = db.collection('users');
             console.log('database connection established...')
