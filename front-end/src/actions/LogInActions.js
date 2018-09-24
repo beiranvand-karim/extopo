@@ -7,13 +7,13 @@ export const CHECK_LOG_IN_ERROR = 'CHECK_LOG_IN_ERROR';
 export default function checkLogIn(userName, passWord) {
     return dispatch => {
         dispatch(checkLogInBegin());
-        return fetch(`http://localhost:3001/auth`,{
+        return fetch(`http://localhost:3001/log-in`,{
             method: "POST",
             headers: {
                 "cache-control": "no-cache",
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({username: userName, password: passWord}),
+            body: JSON.stringify({userName: userName, passWord: passWord}),
         })
             .then(handleErrors)
             .then(res => res.json())
@@ -43,7 +43,9 @@ export const checkLogInSuccess = (token) => {
     }
 };
 
-export const checkLogInError = (error) => ({
-    type: CHECK_LOG_IN_ERROR,
-    payload: error
-});
+export const checkLogInError = (error) => {
+    return {
+        type: CHECK_LOG_IN_ERROR,
+        payload: error
+    }
+};

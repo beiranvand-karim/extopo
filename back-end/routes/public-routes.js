@@ -8,15 +8,17 @@ router.get("/", async function (ctx) {
     ctx.body = {message: `Hello ${name}!`}
 });
 
-router.post("/auth", async (ctx) => {
-    let username = ctx.request.body.username;
-    let password = ctx.request.body.password;
+router.post("/log-in", async (ctx) => {
+    let userName = ctx.request.body.userName;
+    let passWord = ctx.request.body.passWord;
 
-    if (username === "user" && password === "pwd") {
+    const user = await ctx.app.users.findOne({userName: userName, passWord: passWord});
+
+    if (user) {
         ctx.body = {
             token: jwt.issue({
-                user: "user",
-                role: "admin"
+                user: userName,
+                role: passWord
             })
         }
     } else {
