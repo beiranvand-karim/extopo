@@ -1,12 +1,32 @@
-import React from "react";
-import {connect} from "react-redux";
-import fetchPeople from "../actions/FetchPeopleActions";
-import {Link} from "react-router-dom";
+import React from "react"
+import {connect} from "react-redux"
+import {
+   fetchPeopleBegin,
+   fetchPeopleError,
+   fetchPeopleSuccess,
+   handleErrors
+} from "../actions/FetchPeopleActions"
+import {Link} from "react-router-dom"
 
 
-class PeopleList extends React.Component {
+export class PeopleList extends React.Component {
    componentDidMount() {
-      this.props.dispatch(fetchPeople(this.props.token));
+      this.props.fetchPeopleBegin();
+      return fetch(`http://127.0.0.1:3002/people`, {
+         method: "GET",
+         headers: {
+            "cache-control": "no-cache",
+            "Content-Type": "application/json",
+            "Authorization": "bearer " + this.props.token,
+         }
+      })
+         // .then(this.props.handleErrors)
+         .then(res => res.json())
+         .then(json => {
+            this.props.fetchPeopleSuccess(json);
+            return json
+         })
+         .catch(error => this.props.fetchPeopleError(error));
    }
 
    render() {
@@ -35,6 +55,13 @@ class PeopleList extends React.Component {
    }
 }
 
+const mapDispatchToProps = dispatch => ({
+   fetchPeopleError: (error) => dispatch(fetchPeopleError(error)),
+   fetchPeopleSuccess: (json) => dispatch(fetchPeopleSuccess(json)),
+   fetchPeopleBegin: () => dispatch(fetchPeopleBegin()),
+   handleErrors: (response) => dispatch(handleErrors(response))
+});
+
 const mapStateToProps = state => ({
    token: state.tokenState.token,
    loading: state.peopleList.loading,
@@ -42,4 +69,4 @@ const mapStateToProps = state => ({
    people: state.peopleList.people
 });
 
-export default connect(mapStateToProps)(PeopleList);
+export default connect(mapStateToProps, mapDispatchToProps)(PeopleList);

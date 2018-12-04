@@ -5,7 +5,7 @@ export const CHECK_LOG_IN_ERROR = 'CHECK_LOG_IN_ERROR';
 export default function checkLogIn(userName, passWord) {
    return dispatch => {
       dispatch(checkLogInBegin());
-      return fetch(`http://localhost:3001/log-in`, {
+      return fetch(`http://localhost:3002/log-in`, {
          method: "POST",
          headers: {
             "cache-control": "no-cache",

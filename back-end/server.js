@@ -20,4 +20,4 @@ app.use(jwt.errorHandler()).use(jwt.jwt());
 
 
 app.use(securedRouter.routes()).use(securedRouter.allowedMethods());
-app.listen(3001);
+app.listen(3002);

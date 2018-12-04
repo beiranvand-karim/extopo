@@ -5,7 +5,7 @@ export const FETCH_PEOPLE_ERROR = 'FETCH_PEOPLE_ERROR';
 export default function fetchPeople(token) {
    return dispatch => {
       dispatch(fetchPeopleBegin());
-      return fetch(`http://127.0.0.1:3001/people`, {
+      return fetch(`http://127.0.0.1:3002/people`, {
          method: "GET",
          headers: {
             "cache-control": "no-cache",
@@ -23,7 +23,7 @@ export default function fetchPeople(token) {
    }
 }
 
-function handleErrors(response) {
+export function handleErrors(response) {
    if (!response.ok) {
       throw Error(response.statusText);
    }

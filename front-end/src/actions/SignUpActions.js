@@ -5,7 +5,7 @@ export const SIGN_UP_ERROR = 'SIGN_UP_ERROR';
 export default function SingUp(data) {
    return dispatch => {
       dispatch(signUpBegin());
-      return fetch(`http://localhost:3001/sign-up`, {
+      return fetch(`http://localhost:3002/sign-up`, {
          method: "POST",
          headers: {
             "cache-control": "no-cache",

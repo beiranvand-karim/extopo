@@ -5,7 +5,7 @@ export const FETCH_PERSON_ERROR = 'FETCH_PEOPLE_ERROR';
 export default function fetchPerson(token, id) {
    return dispatch => {
       dispatch(fetchPeopleBegin());
-      return fetch(`http://127.0.0.1:3001/people/${id}`, {
+      return fetch(`http://127.0.0.1:3002/people/${id}`, {
          method: "GET",
          headers: {
             "cache-control": "no-cache",
