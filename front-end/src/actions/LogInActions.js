@@ -23,7 +23,7 @@ export default function checkLogIn(userName, passWord) {
    }
 }
 
-function handleErrors(response) {
+export function handleErrors(response) {
    if (!response.ok) {
       throw Error(response.statusText);
    }

@@ -1,13 +1,29 @@
-import React from 'react';
-import checkLogIn from '../actions/LogInActions';
-import {connect} from "react-redux";
-import {Link} from "react-router-dom";
+import React, {Component, Fragment} from 'react'
+import {checkLogInBegin, checkLogInError, checkLogInSuccess, handleErrors} from '../actions/LogInActions'
+import {connect} from "react-redux"
+import {Link} from "react-router-dom"
 
-class LogIn extends React.Component {
+export class LogIn extends Component {
 
    checkOnLogin = (e) => {
       e.preventDefault();
-      this.props.dispatch(checkLogIn(this.state.userName, this.state.passWord));
+      const {userName, passWord} = this.state;
+      this.props.checkLogInBegin();
+      fetch(`http://localhost:3002/log-in`, {
+         method: "POST",
+         headers: {
+            "cache-control": "no-cache",
+            "Content-Type": "application/json",
+         },
+         body: JSON.stringify({userName, passWord}),
+      })
+         // .then(this.props.handleErrors)
+         .then(res => res.json())
+         .then(json => {
+            this.props.checkLogInSuccess(json.token);
+            return json
+         })
+         .catch(error => this.props.checkLogInError(error));
    };
 
    state = {
@@ -33,7 +49,7 @@ class LogIn extends React.Component {
          </div>
       }
       return (
-         <React.Fragment>
+         <Fragment>
             <form onSubmit={this.checkOnLogin.bind(this)}>
                <div>
                   <label htmlFor="userName">user name :</label>
@@ -51,15 +67,20 @@ class LogIn extends React.Component {
                </div>
                <button type="submit">submit</button>
             </form>
-         </React.Fragment>
+         </Fragment>
       );
    }
 }
-
+const mapDispatchToProps = dispatch => ({
+   checkLogInError: (error) => dispatch(checkLogInError(error)),
+   checkLogInSuccess: (json) => dispatch(checkLogInSuccess(json)),
+   checkLogInBegin: () => dispatch(checkLogInBegin()),
+   handleErrors: (response) => dispatch(handleErrors(response))
+});
 const mapStateToProps = state => ({
    error: state.tokenState.error,
    loading: state.tokenState.loading,
    loggedIn: state.tokenState.loggedIn
 });
 
-export default connect(mapStateToProps)(LogIn);
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn);

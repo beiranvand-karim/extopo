@@ -12,7 +12,7 @@ import {Link} from "react-router-dom"
 export class PeopleList extends React.Component {
    componentDidMount() {
       this.props.fetchPeopleBegin();
-      return fetch(`http://127.0.0.1:3002/people`, {
+      fetch(`http://127.0.0.1:3002/people`, {
          method: "GET",
          headers: {
             "cache-control": "no-cache",
