@@ -14,8 +14,8 @@ const middleware = applyMiddleware(thunk);
 const store = createStore(reducer, middleware);
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App/>
-    </Provider>
-    , document.getElementById('root'));
+   <Provider store={store}>
+      <App/>
+   </Provider>
+   , document.getElementById('root'));
 registerServiceWorker();
