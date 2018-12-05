@@ -1,4 +1,4 @@
-import App, {Switcher} from './App'
+import {Switcher} from './App'
 import {MemoryRouter} from "react-router-dom"
 import {mount} from "enzyme"
 import React from 'react'
@@ -10,17 +10,11 @@ import {Home} from "./Home"
 import {PersonDetail} from "../containers/PersonDetail"
 import {SignUp} from "../containers/SignUp"
 import  {Provider} from 'react-redux'
-import {applyMiddleware, createStore} from "redux"
-import thunk from "redux-thunk"
-import reducer from "../reducers"
+import {store} from "../store"
 
 
+describe('<App />', () => {
 
-const middleware = applyMiddleware(thunk);
-
-const store = createStore(reducer, middleware);
-
-describe('App', () => {
    let wrapper = (path) => mount(
       <MemoryRouter initialEntries={[path]}>
          <Provider store={store}>
@@ -28,6 +22,7 @@ describe('App', () => {
          </Provider>
       </MemoryRouter>
    );
+
    it('should navigate to /log-in page', () => {
       const path = '/log-in';
       const comp = wrapper(path);
@@ -50,7 +45,6 @@ describe('App', () => {
       expect(comp.find(UserList)).toHaveLength(1);
    });
 
-
    it('should navigate to / page', () => {
       const path = '/';
       const comp = wrapper(path);
@@ -59,7 +53,6 @@ describe('App', () => {
       expect(comp.find(UserList)).toHaveLength(0);
       expect(comp.find(Home)).toHaveLength(1);
    });
-
 
    it('should navigate to /detail/:id page', () => {
       const path = '/detail/:id';
@@ -70,7 +63,6 @@ describe('App', () => {
       expect(comp.find(Home)).toHaveLength(0);
       expect(comp.find(SingleUser)).toHaveLength(1);
    });
-
 
    it('should navigate to /people-list page', () => {
       const path = '/people-list';
@@ -83,7 +75,6 @@ describe('App', () => {
       expect(comp.find(PeopleList)).toHaveLength(1);
    });
 
-
    it('should navigate to /person-detail/:id page', () => {
       const path = '/person-detail/:id';
       const comp = wrapper(path);
@@ -95,5 +86,4 @@ describe('App', () => {
       expect(comp.find(PeopleList)).toHaveLength(0);
       expect(comp.find(PersonDetail)).toHaveLength(1);
    })
-
 });
