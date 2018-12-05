@@ -1,10 +1,10 @@
-import React from "react";
-import {connect} from "react-redux";
-import {fetchUsers} from "../actions/UserActions";
-import {Link} from "react-router-dom";
+import React from "react"
+import {connect} from "react-redux"
+import {fetchUsers} from "../actions/UserActions"
+import {Link} from "react-router-dom"
 
 
-class UserList extends React.Component {
+export class UserList extends React.Component {
    componentDidMount() {
       this.props.dispatch(fetchUsers());
    }

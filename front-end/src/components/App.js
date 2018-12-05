@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import '../App.css';
-import UserList from "../containers/UserList";
-import SingleUser from "../containers/SingleUser";
-import LogIn from '../containers/LogIn';
-import PeopleList from "../containers/PeopleList";
-import Home from "./Home";
-import PersonDetail from "../containers/PersonDetail";
-import SignUp from "../containers/SignUp";
+import React, {Component} from 'react'
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
+import '../App.css'
+import UserList from "../containers/UserList"
+import SingleUser from "../containers/SingleUser"
+import LogIn from '../containers/LogIn'
+import PeopleList from "../containers/PeopleList"
+import Home from "./Home"
+import PersonDetail from "../containers/PersonDetail"
+import SignUp from "../containers/SignUp"
 
 export class Switcher extends Component {
    render() {

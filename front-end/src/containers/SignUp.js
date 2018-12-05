@@ -1,9 +1,9 @@
-import React from 'react';
-import {connect} from "react-redux";
-import {Link} from "react-router-dom";
-import SingUp from "../actions/SignUpActions";
+import React from 'react'
+import {connect} from "react-redux"
+import {Link} from "react-router-dom"
+import SingUp from "../actions/SignUpActions"
 
-class SignUp extends React.Component {
+export class SignUp extends React.Component {
    state = {
       firstName: '',
       lastName: '',

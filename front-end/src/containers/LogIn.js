@@ -82,5 +82,4 @@ const mapStateToProps = state => ({
    loading: state.tokenState.loading,
    loggedIn: state.tokenState.loggedIn
 });
-
 export default connect(mapStateToProps, mapDispatchToProps)(LogIn);

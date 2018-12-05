@@ -1,8 +1,8 @@
-import React from "react";
-import {fetchSingleUser} from "../actions/SingleUserActions";
-import {connect} from "react-redux";
+import React from "react"
+import {fetchSingleUser} from "../actions/SingleUserActions"
+import {connect} from "react-redux"
 
-class SingleUser extends React.Component {
+export class SingleUser extends React.Component {
    componentDidMount() {
       this.props.dispatch(fetchSingleUser(this.props.match.params.id));
    }

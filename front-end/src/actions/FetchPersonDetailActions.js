@@ -4,7 +4,7 @@ export const FETCH_PERSON_ERROR = 'FETCH_PEOPLE_ERROR';
 
 export default function fetchPerson(token, id) {
    return dispatch => {
-      dispatch(fetchPeopleBegin());
+      dispatch(fetchPersonBegin());
       return fetch(`http://127.0.0.1:3002/people/${id}`, {
          method: "GET",
          headers: {
@@ -16,32 +16,32 @@ export default function fetchPerson(token, id) {
          .then(handleErrors)
          .then(res => res.json())
          .then(json => {
-            dispatch(fetchPeopleSuccess(json));
+            dispatch(fetchPersonSuccess(json));
             return json
          })
-         .catch(error => dispatch(fetchPeopleError(error)));
+         .catch(error => dispatch(fetchPersonError(error)));
    }
 }
 
-function handleErrors(response) {
+export function handleErrors(response) {
    if (!response.ok) {
       throw Error(response.statusText);
    }
    return response;
 }
 
-export const fetchPeopleBegin = () => ({
+export const fetchPersonBegin = () => ({
    type: FETCH_PERSON_BEGIN
 });
 
-export const fetchPeopleSuccess = (person) => {
+export const fetchPersonSuccess = (person) => {
    return {
       type: FETCH_PERSON_SUCCESS,
       payload: person
    }
 };
 
-export const fetchPeopleError = (error) => ({
+export const fetchPersonError = (error) => ({
    type: FETCH_PERSON_ERROR,
    payload: error
 });
